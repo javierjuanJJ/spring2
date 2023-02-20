@@ -21,11 +21,12 @@ public class UserResource {
     UserService userService;
 
     @PostMapping("/register")
-    public ResponseEntity<Map<String, String>>  resgisterUser(@RequestBody Map<String, Object> userMap){
+    public ResponseEntity<Map<String, String>>  resgisterUser(@RequestBody Map<String, Object> userMap) throws EtAuthException {
         String firstName = (String) userMap.get("firstName");
         String lastName = (String) userMap.get("lastName");
         String password = (String) userMap.get("password");
         String email = (String) userMap.get("email");
+        User user = userService.registerUser(firstName, lastName, email, password);
         Map<String, String> map = new HashMap<>();
         userMap.put("message", "registered succesfully");
         return new ResponseEntity<>(map, HttpStatus.OK);

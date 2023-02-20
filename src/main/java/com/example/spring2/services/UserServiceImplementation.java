@@ -3,10 +3,12 @@ package com.example.spring2.services;
 import com.example.spring2.Exceptions.EtAuthException;
 import com.example.spring2.domain.User;
 import com.example.spring2.respositories.UserRepository;
+import com.example.spring2.respositories.UserRepositoryImplementation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.sql.SQLException;
 import java.util.regex.Pattern;
 
 @Service
@@ -14,7 +16,7 @@ import java.util.regex.Pattern;
 public class UserServiceImplementation implements UserService{
 
     @Autowired
-    private UserRepository userRepository;
+    UserRepository userRepository;
     @Override
     public User validateUser(String email, String password) throws EtAuthException {
         return null;
@@ -33,9 +35,9 @@ public class UserServiceImplementation implements UserService{
         if (userRepository.getCountByEmail(email) > 0){
             throw new EtAuthException("Email already in use");
         }
-
+        
         Integer idUser = userRepository.create(firstName, lastName, email, password);
-
+        
 
         return userRepository.findById(idUser);
     }
