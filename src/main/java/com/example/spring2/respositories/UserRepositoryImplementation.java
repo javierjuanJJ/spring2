@@ -3,8 +3,10 @@ package com.example.spring2.respositories;
 import com.example.spring2.Exceptions.EtAuthException;
 import com.example.spring2.domain.User;
 import com.example.spring2.services.UserService;
+import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.*;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
@@ -49,6 +51,8 @@ public class UserRepositoryImplementation implements UserRepository{
     @Override
     public Integer create(String firstName, String lastName, String email, String password) throws EtAuthException {
 
+        String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt(10));
+
         try {
             KeyHolder keyHolder = new GeneratedKeyHolder();
 
@@ -57,7 +61,7 @@ public class UserRepositoryImplementation implements UserRepository{
                 ps.setString(1, firstName);
                 ps.setString(2, lastName);
                 ps.setString(3, email);
-                ps.setString(4, password);
+                ps.setString(4, hashedPassword);
                 return ps;
             }, keyHolder);
             return (Integer) keyHolder.getKeys().get("USER_ID");
@@ -72,7 +76,15 @@ public class UserRepositoryImplementation implements UserRepository{
 
     @Override
     public User findByEmailAndPassword(String email, String password) throws EtAuthException {
-        return null;
+        try {
+            User user = jdbcTemplate.queryForObject(SQL_FIND_BY_EMAIL, userRowMapper, email);
+            if (!BCrypt.checkpw(password, user.getPassword())){
+                throw new EtAuthException("Invalid email/password");
+            }
+            return user;
+        }catch (EmptyResultDataAccessException e){
+            throw new EtAuthException("Invalid email/password");
+        }
     }
 
     @Override
