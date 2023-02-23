@@ -64,7 +64,7 @@ public class CategoryResource {
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 
-    private static int getUserId(HttpServletRequest request) {
+    public static int getUserId(HttpServletRequest request) {
         return Integer.parseInt(request.getHeader("userId"));
     }
 

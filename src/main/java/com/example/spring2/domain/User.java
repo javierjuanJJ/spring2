@@ -1,5 +1,8 @@
 package com.example.spring2.domain;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class User {
     private Integer userId;
     private String firstName;
@@ -53,6 +56,15 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Map<String, String> getHashMapUser(){
+        Map<String, String> map = new HashMap<>();
+        map.put("firstName", getFirstName());
+        map.put("lastName", getLastName());
+        map.put("password", getPassword());
+        map.put("email", getEmail());
+        return map;
     }
 
     @Override

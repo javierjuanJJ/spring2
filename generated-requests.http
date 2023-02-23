@@ -1,0 +1,94 @@
+POST  http://localhost:8080/api/users/login
+Content-Type: application/json
+
+{
+  "email": "jj2@gmail.com",
+  "password": "1234"
+}
+
+###
+POST http://localhost:8080/api/users/register
+Content-Type: application/json
+
+{
+  "firstName": "jj2",
+  "lastName": "jj2",
+  "password": "1234",
+  "email": "jj2@gmail.com"
+}
+
+###
+GET http://localhost:8080/api/categories
+Authorization: "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2NzcxNjU3MjgsImV4cCI6MTY3NzE3MjkyOCwidXNlcklkIjoyLCJlbWFpbCI6ImpqMkBnbWFpbC5jb20iLCJmaXJzdE5hbWUiOiJqajIiLCJsYXN0TmFtZSI6ImpqMiJ9.5RsZmXTo9arHs6gVI3a3octUdxwcdoCEF7ZWFv4XWf4"
+userId:2
+
+###
+GET http://localhost:8080/api/categories/1
+Authorization: "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2NzcxNjU3MjgsImV4cCI6MTY3NzE3MjkyOCwidXNlcklkIjoyLCJlbWFpbCI6ImpqMkBnbWFpbC5jb20iLCJmaXJzdE5hbWUiOiJqajIiLCJsYXN0TmFtZSI6ImpqMiJ9.5RsZmXTo9arHs6gVI3a3octUdxwcdoCEF7ZWFv4XWf4"
+userId:2
+
+###
+GET http://localhost:8080/api/categories/1
+Authorization: "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2NzcxNjU3MjgsImV4cCI6MTY3NzE3MjkyOCwidXNlcklkIjoyLCJlbWFpbCI6ImpqMkBnbWFpbC5jb20iLCJmaXJzdE5hbWUiOiJqajIiLCJsYXN0TmFtZSI6ImpqMiJ9.5RsZmXTo9arHs6gVI3a3octUdxwcdoCEF7ZWFv4XWf4"
+userId:1
+
+###
+POST http://localhost:8080/api/categories
+Authorization: "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2NzcxNjU3MjgsImV4cCI6MTY3NzE3MjkyOCwidXNlcklkIjoyLCJlbWFpbCI6ImpqMkBnbWFpbC5jb20iLCJmaXJzdE5hbWUiOiJqajIiLCJsYXN0TmFtZSI6ImpqMiJ9.5RsZmXTo9arHs6gVI3a3octUdxwcdoCEF7ZWFv4XWf4"
+userId:2
+Content-Type: application/json
+
+{
+  "title": "Product 2",
+  "description": "Description product 2"
+}
+
+###
+PUT http://localhost:8080/api/categories/2
+Authorization: "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2NzcxNjU3MjgsImV4cCI6MTY3NzE3MjkyOCwidXNlcklkIjoyLCJlbWFpbCI6ImpqMkBnbWFpbC5jb20iLCJmaXJzdE5hbWUiOiJqajIiLCJsYXN0TmFtZSI6ImpqMiJ9.5RsZmXTo9arHs6gVI3a3octUdxwcdoCEF7ZWFv4XWf4"
+userId:2
+Content-Type: application/json
+
+{
+  "title": "Product updated 2",
+  "description": "Description updated product 2"
+}
+
+###
+DELETE http://localhost:8080/api/categories/2
+Authorization: "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2NzcxNjU3MjgsImV4cCI6MTY3NzE3MjkyOCwidXNlcklkIjoyLCJlbWFpbCI6ImpqMkBnbWFpbC5jb20iLCJmaXJzdE5hbWUiOiJqajIiLCJsYXN0TmFtZSI6ImpqMiJ9.5RsZmXTo9arHs6gVI3a3octUdxwcdoCEF7ZWFv4XWf4"
+userId:2
+
+###
+GET http://localhost:8080/api/categories/1/transactions
+Authorization: "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2NzcxNjU3MjgsImV4cCI6MTY3NzE3MjkyOCwidXNlcklkIjoyLCJlbWFpbCI6ImpqMkBnbWFpbC5jb20iLCJmaXJzdE5hbWUiOiJqajIiLCJsYXN0TmFtZSI6ImpqMiJ9.5RsZmXTo9arHs6gVI3a3octUdxwcdoCEF7ZWFv4XWf4"
+userId:2
+
+###
+POST http://localhost:8080/api/categories/1/transactions
+Authorization: "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2NzcxNjU3MjgsImV4cCI6MTY3NzE3MjkyOCwidXNlcklkIjoyLCJlbWFpbCI6ImpqMkBnbWFpbC5jb20iLCJmaXJzdE5hbWUiOiJqajIiLCJsYXN0TmFtZSI6ImpqMiJ9.5RsZmXTo9arHs6gVI3a3octUdxwcdoCEF7ZWFv4XWf4"
+userId:2
+Content-Type: application/json
+
+{
+  "amount": 5.2,
+  "note": "Transaction 1",
+  "transactionDate": 0
+}
+
+###
+PUT http://localhost:8080/api/categories/1/transactions/1
+Authorization: "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2NzcxNjU3MjgsImV4cCI6MTY3NzE3MjkyOCwidXNlcklkIjoyLCJlbWFpbCI6ImpqMkBnbWFpbC5jb20iLCJmaXJzdE5hbWUiOiJqajIiLCJsYXN0TmFtZSI6ImpqMiJ9.5RsZmXTo9arHs6gVI3a3octUdxwcdoCEF7ZWFv4XWf4"
+userId:2
+Content-Type: application/json
+
+{
+  "amount": 5.3,
+  "note": "Transaction updated 1",
+  "transactionDate": 0
+}
+
+###
+DELETE http://localhost:8080/api/categories/1/transactions/1002
+Authorization: "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2NzcxNjU3MjgsImV4cCI6MTY3NzE3MjkyOCwidXNlcklkIjoyLCJlbWFpbCI6ImpqMkBnbWFpbC5jb20iLCJmaXJzdE5hbWUiOiJqajIiLCJsYXN0TmFtZSI6ImpqMiJ9.5RsZmXTo9arHs6gVI3a3octUdxwcdoCEF7ZWFv4XWf4"
+userId:2
